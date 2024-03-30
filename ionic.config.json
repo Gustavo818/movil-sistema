@@ -1,0 +1,7 @@
+{
+  "name": "movil-sistema",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
