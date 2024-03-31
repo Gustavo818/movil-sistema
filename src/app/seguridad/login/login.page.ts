@@ -10,6 +10,7 @@ import { ConeccionService } from 'src/app/coneccion.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   loginForm: FormGroup;
   private isAuthenticated = false;
   private authSecretKey = 'Bearer Token';
