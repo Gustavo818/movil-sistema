@@ -24,3 +24,113 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+// global app styles
+@import "./theme/app.scss";
+
+
+/*
+ion-input {
+    padding: 8px 10px 0px;
+    margin-bottom: 4px;
+    min-height: 80px;
+    max-height: 160px;
+    border-radius: 8px;
+    background-color: var(--feedback-input-bg);
+    box-shadow: 4px 4px 8px 0px var(--shadow-color);
+    font-size: 16px;
+    font-family: "WorkSans-Regular";
+    color: var(--color-darkgrey);
+    caret-color: rgb(4, 72, 128);
+}*/
+ion-input {
+// --placeholder-color:red!important;
+
+--placeholder-opacity:0.8;
+}
+
+body {
+    font-family: WorkSans-Medium;
+}
+
+.icon-grande {
+    font-size: 30px;
+    /* Tamaño del ícono */
+}
+
+ion-button {
+    text-transform: none;
+    font-family: WorkSans-Medium;
+    width: 120px;
+    height: 40px;
+    --background: rgb(33, 150, 243);
+    --border-radius: 4px;
+    --box-shadow: 4px 4px 8px 0px var(--shadow-color2);
+}
+
+.contenido {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.titulopagina{
+    margin-top: 40px;
+    margin-left: 15px;
+    color: #0B7293;
+    font-weight: bold;
+}
+.div-redondeado {
+    border-radius: 10px; /* Ajusta el valor según el radio de redondeo que desees */
+    border: 2px solid #F8F9F9 ; /* Color azul para los bordes */
+    background-color:#F2F4F4;
+    background-color:#EDF0F280;
+    border: 1px solid #425B76 ; /* Color azul para los bordes */
+    margin:10px;  
+    margin-right: 20px;
+  }
+.tarjeta_nombre{
+    font-family: WorkSans-Medium;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+.tarjeta_info{
+    font-family: WorkSans-Medium;
+    color: #2C3E50 ; 
+    font-size: 13px;
+}
+
+.input-red-background input {
+    background-color: #EDF0F280;
+
+}
+
+
+
+:root {
+    --ion-color-primary: #006600;
+    --ion-color-secondary: #006600;
+    --ion-color-secondary-rgb: 0, 102, 0;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #005a00;
+    --ion-color-secondary-tint: #1a751a;
+  }
+
+  :root {
+	--ion-color-azul: #0B7293;
+	--ion-color-azul-rgb: 11,114,147;
+	--ion-color-azul-contrast: #ffffff;
+	--ion-color-azul-contrast-rgb: 255,255,255;
+	--ion-color-azul-shade: #0a6481;
+	--ion-color-azul-tint: #23809e;
+}
+
+.ion-color-azul {
+	--ion-color-base: var(--ion-color-azul);
+	--ion-color-base-rgb: var(--ion-color-azul-rgb);
+	--ion-color-contrast: var(--ion-color-azul-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-azul-contrast-rgb);
+	--ion-color-shade: var(--ion-color-azul-shade);
+	--ion-color-tint: var(--ion-color-azul-tint);
+}
+ 
