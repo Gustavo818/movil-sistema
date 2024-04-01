@@ -1,0 +1,90 @@
+<ion-content>
+  <h3 class="titulopagina">Datos del Remitente </h3>
+  <ion-grid>
+    <ion-item>
+      <ion-row>
+        <ion-col size-xs="12" size-md="6">
+
+
+          <ion-input label="Nombre" label-placement="floating" [(ngModel)]="remi_nom" fill="outline"
+            placeholder="Ingrese el nombre"></ion-input>
+
+
+        </ion-col>
+
+        <ion-col size-xs="12" size-md="6">
+
+          <ion-input label="Apellido" label-placement="floating" fill="outline" [(ngModel)]="remi_apellido"
+            placeholder="Ingrese el apellido "></ion-input>
+
+
+
+        </ion-col>
+
+
+        <ion-col size-xs="12" size-md="6">
+          <ion-input label="Teléfono" label-placement="floating" fill="outline" [(ngModel)]="remi_telf"
+            placeholder="Ingrese Teléfono"></ion-input>
+        </ion-col>
+
+
+        <ion-col size-xs="12" size-md="6">
+          <ion-label>Provincia</ion-label>
+          <ion-select fill="outline" [(ngModel)]="remi_prov" (ionChange)="getCiudades()">
+            <ion-select-option *ngFor="let provincia of provincias">{{ provincia }}</ion-select-option>
+          </ion-select>
+
+
+        </ion-col>
+
+
+        <ion-col size-xs="12" size-md="6">
+
+
+          <ion-select fill="outline" [(ngModel)]="remi_ciu">
+            <ion-select-option *ngFor="let ciudad of ciudades">{{ ciudad.serv_ciu }}</ion-select-option>
+          </ion-select>
+
+        </ion-col>
+
+
+
+        <ion-col size-xs="12" size-md="6">
+
+          <ion-input label="Dirección" label-placement="floating" fill="outline" [(ngModel)]="remi_dir"
+            placeholder="Ingrese Dirección"></ion-input>
+
+        </ion-col>
+
+
+        <ion-col size-xs="12" size-md="6">
+
+
+          <ion-input label="Referencia" label-placement="floating" fill="outline" [(ngModel)]="remi_ref"
+            placeholder="Ingrese Referencia"></ion-input>
+
+        </ion-col>
+
+
+        <ion-col size-xs="12" size-md="6">
+
+          <ion-input label="Correo" label-placement="floating" fill="outline" [(ngModel)]="remi_email"
+            placeholder="Ingrese Correo"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-grid>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size-xs="12" size-md="6">
+        <ion-button  (click)="guardar()" expand="full" color="dark">
+          <ion-icon slot="start" name="save-outline"></ion-icon>
+          Guardar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

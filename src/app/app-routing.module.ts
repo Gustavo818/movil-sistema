@@ -18,7 +18,15 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () => import('./drawer/drawer.module').then( m => m.DrawerPageModule)
+  },  {
+    path: 'remitente-formulario',
+    loadChildren: () => import('./paginas/remitente-formulario/remitente-formulario.module').then( m => m.RemitenteFormularioPageModule)
   },
+  {
+    path: 'remitente-lista',
+    loadChildren: () => import('./paginas/remitente-lista/remitente-lista.module').then( m => m.RemitenteListaPageModule)
+  },
+
 
 
 ];

@@ -15,6 +15,16 @@ const routes: Routes = [
       },
 
 
+      {
+        path: 'remitente/:id',///envios/ordenes/ordenes.module
+        loadChildren: () => import('../paginas/remitente-formulario/remitente-formulario.module').then( m => m.RemitenteFormularioPageModule)
+      },
+
+      {
+        path: 'remitente-lista',///envios/ordenes/ordenes.module
+        loadChildren: () => import('../paginas/remitente-lista/remitente-lista.module').then( m => m.RemitenteListaPageModule)
+      },
+
       
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],

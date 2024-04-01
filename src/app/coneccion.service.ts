@@ -129,4 +129,24 @@ export class ConeccionService {
    return !!localStorage.getItem('token'); // Retorna verdadero si existe un token, falso si no
  }
 
+
+ getCiudades(provincia:string){
+  let token:any = '';
+  token = sessionStorage.getItem('token');
+  const header = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',         
+      'Authorization':   token      ,
+      "Accept": "application/json"
+     
+    })
+  };
+
+  let  datos={'provincia':provincia};
+  let url = this.apiUrl + 'method/tarjetaapp.sw_envios.getCiudades';
+  return this.httpClient.post(url, datos,  header); 
 }
+
+
+}
+

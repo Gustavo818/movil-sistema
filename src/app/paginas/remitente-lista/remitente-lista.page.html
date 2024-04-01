@@ -1,0 +1,27 @@
+
+<ion-content >
+
+  <h3   class="titulopagina" >Lista de remitentes</h3>
+
+  <div class="div-redondeado" *ngFor="let item of this.datos">
+    <ion-grid >
+      <ion-row>
+        <ion-col size-xs="10"   >
+          <div class="tarjeta_nombre"> {{ item.nombre_completo }}  </div>  
+         <div class="tarjeta_info"> {{ item.remi_prov }}, {{ item.remi_ciu }}  {{ item.remi_dir }} </div>
+         <div class="tarjeta_info"> {{ item.remi_email }}  </div>  
+         <div class="tarjeta_info"> {{ item.remi_telf }} </div>         
+        </ion-col>
+        
+        <ion-col size-xs="2"   >
+       
+          <div> <a href="/menu/remitente/{{item.name}}">  <ion-icon color="dark"  class="icon-grande"  name="create-outline" ></ion-icon> </a>  </div>
+          <div> <ion-icon class="icon-grande"  color="danger"  name="trash-outline" (click)="presentAlertConfirm(item.name)"  ></ion-icon></div>
+       </ion-col>
+      </ion-row>
+    </ion-grid> 
+  </div> 
+</ion-content>
+
+
+ 
