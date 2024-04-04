@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:'https://mcjnegocios.club/api/',
+  apiUrl: 'http://frappe15:8190/api/',
+  // apiUrl:'https://mcjnegocios.club/api/',
 };
 
 /*

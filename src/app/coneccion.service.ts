@@ -21,15 +21,18 @@ export class ConeccionService {
  login_frappe(usuario: any, password: any) {
 
    let params = { usr: usuario, pwd: password };
-   console.log('tarjetaapp==>', JSON.stringify(params));
+   console.log('1 app_triplea==>', JSON.stringify(params));
 
    const header = {
      headers: new HttpHeaders({
        'Content-Type': 'application/json',
      })
    };
-   let url = this.apiUrl + 'method/tarjetaapp.sw.login';
-   console.log('tarjetaapp==>', JSON.stringify(url));
+
+  //  http://frappe15:8190/api/method/app_triplea.utils.sync.getdatos
+   
+   let url = this.apiUrl + 'method/app_triplea.utils.servicios.login';
+   console.log('2 app_triplea==>', JSON.stringify(url));
 
 
    return this.httpClient.post(url, params, header);
@@ -48,6 +51,9 @@ export class ConeccionService {
    let url = this.apiUrl + `resource/${doctype_name}?fields=["*"]`;
    return this.httpClient.get(url,  header); 
  }
+
+
+
  getDocytpe_fields( doctype_name:String , campos:any) { 
    let token:any = '';
    token = sessionStorage.getItem('token');

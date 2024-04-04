@@ -22,13 +22,14 @@ export class LoginPage implements OnInit {
               private alertController: AlertController) {
 
     this.loginForm = formBuilder.group({
-      username: ['adrianita@hotmail.com', Validators.required],
-      password: ['App.2024', Validators.required]
+      username: ['ivan@gmail.com', Validators.required],
+      password: ['soy.ivan', Validators.required]
     });
 
     this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
  
   }
+
   ngOnInit() {
   }
   ionViewWillEnter(){
@@ -36,13 +37,12 @@ export class LoginPage implements OnInit {
     sessionStorage.removeItem('usuario');
  
   }
+
   async onClick() {
-
- 
-
+   
    this.cnx.login_frappe(this.loginForm.value.username, this.loginForm.value.password).subscribe(
       (result: any) => {
-        console.log(result.message );
+        console.log("gus 2> " + result.message );
         if (result.message.success_key == 0) {
           this.mensaje( result.message.message);
         } else { 
