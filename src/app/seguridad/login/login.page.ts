@@ -42,14 +42,17 @@ export class LoginPage implements OnInit {
    
    this.cnx.login_frappe(this.loginForm.value.username, this.loginForm.value.password).subscribe(
       (result: any) => {
-        console.log("gus 2> " + result.message );
+         
+        console.log( result.message );
         if (result.message.success_key == 0) {
           this.mensaje( result.message.message);
         } else { 
-         console.log(result.message);
+          console.log(result.message);
+          console.log(">");
+          console.log(result.message.csrf_token);
           sessionStorage.setItem('usuario', result.message.usuario);
           sessionStorage.setItem('token', result.message.csrf_token);      
-           console.log( sessionStorage.getItem('token'));   
+          console.log(sessionStorage.getItem('token'));   
            this.route.navigateByUrl('menu');
         }
 

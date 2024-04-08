@@ -20,7 +20,7 @@ export class ConeccionService {
 
  login_frappe(usuario: any, password: any) {
 
-   let params = { usr: usuario, pwd: password };
+   let params = { usuario: usuario, password: password };
    console.log('1 app_triplea==>', JSON.stringify(params));
 
    const header = {

@@ -212,11 +212,11 @@ export class DrawerPage implements AfterViewInit {
   }
 
   getinfoUser() {
-    
-    this.cnx.getDocytpe_all_fields('cliente').subscribe( (data:any) => {     
-      this.v_nombre = data.data[0].nombre_completo;
-      this.v_logo =  data.data[0].logo;
-      console.log( data.data[0] );
+
+    this.cnx.getDocytpe_all_fields('dat_empleado').subscribe( (data:any) => {     
+      this.v_nombre = data.data[0].emple_nombres;
+      this.v_logo =  data.data[0].emple_cedula;
+      console.log( data.data );
 
  
     });
