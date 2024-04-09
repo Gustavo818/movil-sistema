@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { AnimationController, Platform, ToastController } from '@ionic/angular';
 import { Template } from 'src/app/types/home';
+import { ConeccionService } from 'src/app/coneccion.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,10 @@ import { Template } from 'src/app/types/home';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements AfterViewInit {
+  datos   : any;
+  v_nombre:any;
+  v_logo  :any;
+  
   // ref: "https://ionicframework.com/blog/building-interactive-ionic-apps-with-gestures-and-animations/"
   @ViewChildren('templateList', { read: ElementRef })
   templateListRef?: QueryList<ElementRef>;
@@ -56,8 +61,47 @@ export class HomePage implements AfterViewInit {
   constructor(
     public toastController: ToastController,
     private animationCtrl: AnimationController,
-    private platform: Platform
+    private platform: Platform,
+    private cnx: ConeccionService,
   ) {}
+
+
+  ngOnInit() {
+    // this.getinfoUser();
+    this.getDatos();
+  }
+
+
+
+  getinfoUser() { 
+    this.cnx.getDocytpe_all_fields('dat_empleado').subscribe( (data:any) => { 
+      console.log("home.getinfoUser :");    
+      this.v_nombre = data.data[0].emple_nombres;
+      this.v_logo =  data.data[0].emple_cedula;
+      console.log( data.data ); 
+    });
+
+  }
+
+  async getDatos(){  
+    let  campos = ['name','emple_nombres','emple_correo', 'emple_direccion'];
+    this.cnx.getDocytpe_fields("dat_empleado",campos).subscribe((datos:any)=>{
+      console.log("home.getDatos :");
+      this.datos = datos.data;
+      console.log(this.datos);
+    });
+
+  }
+
+
+  
+  async presentAlertConfirm(id:any) {
+    console.log('presentAlertConfirm.id : ' + id);
+     
+ 
+  }  
+
+ 
 
   ngAfterViewInit() {
     // Workaround just to fix list flicker issue especially on Android

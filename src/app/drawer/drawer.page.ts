@@ -43,7 +43,13 @@ export const revealAnimation: AnimationBuilder = (
   templateUrl: './drawer.page.html',
   styleUrls: ['./drawer.page.scss'],
 })
+
+
 export class DrawerPage implements AfterViewInit {
+
+  datos : any;
+
+
   @ViewChild('userAvatar', { read: ElementRef })
   userAvatarRef?: ElementRef;
   @ViewChild('menuIcon', { read: ElementRef })
@@ -70,6 +76,7 @@ export class DrawerPage implements AfterViewInit {
     { name: 'Remitentes Lista', icon: 'info', url: '/menu/remitente-lista' },
     
   ];
+
   drawerWidth: number = 280;
   rowWidth: number = this.drawerWidth - 64;
   activeTab = 'Home';
@@ -89,13 +96,13 @@ export class DrawerPage implements AfterViewInit {
       this.initDrawerAnimation();
     });
 
-    this.getinfoUser();
+
   }
+
+
 
   ngAfterViewInit() {
     this.initDrawerAnimation();
-
-  
   }
 
   ionViewDidEnter() {
@@ -116,8 +123,33 @@ export class DrawerPage implements AfterViewInit {
   }
 
   ngOnInit() {
-  
+    // this.getinfoUser();
+    // this.getDatos();
   }
+
+
+
+  getinfoUser() { 
+    this.cnx.getDocytpe_all_fields('dat_empleado').subscribe( (data:any) => { 
+      console.log("getinfoUser :");    
+      this.v_nombre = data.data[0].emple_nombres;
+      this.v_logo =  data.data[0].emple_cedula;
+      console.log( data.data ); 
+    });
+
+  }
+
+  async getDatos(){  
+    let  campos = ['name','emple_nombres'];
+    this.cnx.getDocytpe_all_fields("dat_empleado").subscribe((datos:any)=>{
+      console.log("getDatos :");
+      this.datos = datos.data;
+      console.log(this.datos);
+    });
+
+  }
+
+
   ionViewWillLeave() {
     this.routeChangeEvent?.unsubscribe();
   }
@@ -211,14 +243,5 @@ export class DrawerPage implements AfterViewInit {
     this.menu.toggle('main-menu');
   }
 
-  getinfoUser() {
 
-    this.cnx.getDocytpe_all_fields('dat_empleado').subscribe( (data:any) => {     
-      this.v_nombre = data.data[0].emple_nombres;
-      this.v_logo =  data.data[0].emple_cedula;
-      console.log( data.data );
-
- 
-    });
-  }
 }

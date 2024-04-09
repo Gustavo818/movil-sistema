@@ -8,16 +8,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      <!-- Initial 'opacity: 0' and timer just to fix list flicker issue especially on Android -->
-      <ion-col >
-dfdfdfdfdf 
-      </ion-col> 
-      <ion-col >
-        eeee
-              </ion-col> 
-    </ion-row>
-  </ion-grid>
+
+<ion-content >
+
+  <h3   class="titulopagina" >Lista Empleados</h3>
+
+  <div class="div-redondeado" *ngFor="let item of this.datos">
+    <ion-grid >
+      <ion-row>
+        <ion-col size-xs="10"   >
+         <div class="tarjeta_nombre">   {{ item.emple_nombres }}    </div>  
+         <div class="tarjeta_info">     {{ item.emple_correo }}     </div>
+         <div class="tarjeta_info">     {{ item.emple_direccion }}  </div>          
+        </ion-col>
+<!--         
+        <ion-col size-xs="2"   >
+       
+          <div> <a href="/menu/remitente/{{item.name}}">  <ion-icon color="dark"  class="icon-grande"  name="create-outline" ></ion-icon> </a>  </div>
+          <div> <ion-icon class="icon-grande"  color="danger"  name="trash-outline" (click)="presentAlertConfirm(item.name)"  ></ion-icon></div>
+       </ion-col>
+-->
+
+      </ion-row>
+    </ion-grid> 
+  </div> 
 </ion-content>
