@@ -22,8 +22,8 @@ export class LoginPage implements OnInit {
               private alertController: AlertController) {
 
     this.loginForm = formBuilder.group({
-      username: ['ivan@gmail.com', Validators.required],
-      password: ['soy.ivan', Validators.required]
+      username: ['gustavoyancha@gmail.com', Validators.required],
+      password: ['Ambato.3000', Validators.required]
     });
 
     this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
