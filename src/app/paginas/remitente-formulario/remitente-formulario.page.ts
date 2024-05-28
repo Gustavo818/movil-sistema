@@ -34,33 +34,33 @@ export class RemitenteFormularioPage implements OnInit {
   remi_numer      : string ="";
   codigo_postal   : string ="";
   remi_email      : string ="";
-  remi_pais       : string ="Ecuador";
+  remi_pais       : string ="ECUADOR";
   ciudades:  any ;
   provincias: string[] = [
-    'Azuay',
-    'Bolívar',
-    'Cañar',
-    'Carchi',
-    'Chimborazo',
-    'Cotopaxi',
-    'El Oro',
-    'Esmeraldas',
-    'Galápagos',
-    'Guayas',
-    'Imbabura',
-    'Loja',
-    'Los Ríos',
-    'Manabí',
-    'Morona Santiago',
-    'Napo',
-    'Orellana',
-    'Pastaza',
-    'Pichincha',
-    'Santa Elena',
-    'Santo Domingo de los Tsáchilas',
-    'Sucumbíos',
-    'Tungurahua',
-    'Zamora Chinchipe',
+    'AZUAY',
+    'BOLÍVAR',
+    'CAÑAR',
+    'CARCHI',
+    'CHIMBORAZO',
+    'COTOPAXI',
+    'EL ORO',
+    'ESMERALDAS',
+    'GALÁPAGOS',
+    'GUAYAS',
+    'IMBABURA',
+    'LOJA',
+    'LOS RÍOS',
+    'MANABÍ',
+    'MORONA SANTIAGO',
+    'NAPO',
+    'ORELLANA',
+    'PASTAZA',
+    'PICHINCHA',
+    'SANTA ELENA',
+    'SANTO DOMINGO DE LOS TSÁCHILAS',
+    'SUCUMBÍOS',
+    'TUNGURAHUA',
+    'ZAMORA CHINCHIPE',
   ];
 
   paises: string[] = [
@@ -69,6 +69,7 @@ export class RemitenteFormularioPage implements OnInit {
 
 
   constructor(
+    
     private navController: NavController,
     private cnx: ConeccionService,
     private alertController: AlertController,
@@ -95,7 +96,7 @@ export class RemitenteFormularioPage implements OnInit {
       
       console.log(id)
 
-      this.cnx.getDocytpe("EnvioRemitente",id).subscribe((datos:any)=>{
+      this.cnx.getDocytpe("envio_remitente",id).subscribe((datos:any)=>{
         console.log(datos);
         this.remi_nom         = datos.data.remi_nom ; 
         this.remi_apellido    = datos.data.remi_apellido ; 
@@ -129,7 +130,8 @@ export class RemitenteFormularioPage implements OnInit {
     else{
       this.editRemitente();
     }
-
+    // this.utils.sweetalert("Guardado correctamente");
+    console.log("Guardado correctamente");
   } 
 
   async insertRemitente(){
@@ -142,24 +144,25 @@ export class RemitenteFormularioPage implements OnInit {
       'nombre_completo' : this.nombre_completo,
       'remi_telf'       : this.remi_telf,
       'remi_prov'       : this.remi_prov,
-      'remi_ciu'        : this.remi_ciu,
+      'remi_ciu'        : '123',  // this.remi_ciu
       'remi_dir'        : this.remi_dir,
       'remi_ref'        : this.remi_ref,
       'cliente'         : this.cliente,
       'remi_ref_inter'  : this.remi_ref_inter,
       'remi_numer'      : this.remi_numer,
-      'código_postal'   : this.codigo_postal,
+      'codigo_postal'   : this.codigo_postal,
       'remi_email'      : this.remi_email,
       'remi_pais'       : this.remi_pais
     };
-    this.cnx.saveDoctype("EnvioRemitente", datos).subscribe(
+    console.log({datos});
+    this.cnx.saveDoctype("envio_remitente", datos).subscribe(
       (resultado: any) => {
    
         if( resultado.nombre_completo){
            this.mensaje("Se ha ingresado:" +resultado.nombre_completo  );
         }    
        
-
+         
       }
       , (error:any)=>{
         this.mensaje( error);
@@ -183,11 +186,11 @@ export class RemitenteFormularioPage implements OnInit {
       'cliente'         : this.cliente,
       'remi_ref_inter'  : this.remi_ref_inter,
       'remi_numer'      : this.remi_numer,
-      'código_postal'   : this.codigo_postal,
+      'codigo_postal'   : this.codigo_postal,
       'remi_email'      : this.remi_email,
       'remi_pais'       : this.remi_pais
     };
-    this.cnx.updateDoctype("EnvioRemitente", this.id, datos).subscribe(
+    this.cnx.updateDoctype("envio_remitente", this.id, datos).subscribe(
       (resultado: any) => {
         console.log(resultado);
       }
@@ -209,10 +212,16 @@ export class RemitenteFormularioPage implements OnInit {
     await alert.present();
 
   }
+
+
+
   getCiudades(){
     this.cnx.getCiudades(this.remi_prov).subscribe(  (resultado:any)=>{
-      console.log(resultado);
+      console.log('resultado: ', resultado);
+
       this.ciudades = resultado.message;
+
+      console.log('ciudades filtradas: ',  this.ciudades);
     } );
   }
 

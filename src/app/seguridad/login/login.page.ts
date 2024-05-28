@@ -50,10 +50,15 @@ export class LoginPage implements OnInit {
           console.log(result.message);
           console.log(">");
           console.log(result.message.csrf_token);
-          sessionStorage.setItem('usuario', result.message.usuario);
-          sessionStorage.setItem('token', result.message.csrf_token);      
+          sessionStorage.setItem('usuario', result.message.user);
+          sessionStorage.setItem('token', result.message.csrf_token);    
+          sessionStorage.setItem('cliente_name', result.message.cliente_username);         
+          console.log(">>");   
+          console.log(sessionStorage.getItem('usuario'));   
           console.log(sessionStorage.getItem('token'));   
-           this.route.navigateByUrl('menu');
+          console.log(sessionStorage.getItem('cliente_name'));   
+          console.log("<<");   
+          this.route.navigateByUrl('menu');
         }
 
        

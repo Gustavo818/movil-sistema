@@ -74,18 +74,18 @@ export class HomePage implements AfterViewInit {
 
 
   getinfoUser() { 
-    this.cnx.getDocytpe_all_fields('dat_empleado').subscribe( (data:any) => { 
+    this.cnx.getDocytpe_all_fields('cliente').subscribe( (data:any) => { 
       console.log("home.getinfoUser :");    
-      this.v_nombre = data.data[0].emple_nombres;
-      this.v_logo =  data.data[0].emple_cedula;
+      this.v_nombre = data.data[0].codigo;
+      this.v_logo =  data.data[0].nombre;
       console.log( data.data ); 
     });
 
   }
 
   async getDatos(){  
-    let  campos = ['name','emple_nombres','emple_correo', 'emple_direccion'];
-    this.cnx.getDocytpe_fields("dat_empleado",campos).subscribe((datos:any)=>{
+    let  campos = ['name','productos_familia','codigo', 'nombre'];
+    this.cnx.getDocytpe_fields("producto",campos).subscribe((datos:any)=>{
       console.log("home.getDatos :");
       this.datos = datos.data;
       console.log(this.datos);

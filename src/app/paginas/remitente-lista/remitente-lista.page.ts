@@ -25,7 +25,7 @@ export class RemitenteListaPage implements OnInit {
   async getDatos(){
     let  campos = ['name','nombre_completo'];
 
-    this.cnx.getDocytpe_all_fields("EnvioRemitente").subscribe((datos:any)=>{
+    this.cnx.getDocytpe_all_fields("envio_remitente").subscribe((datos:any)=>{
       console.log(datos.data);
       this.datos = datos.data;
       console.log(this.datos);

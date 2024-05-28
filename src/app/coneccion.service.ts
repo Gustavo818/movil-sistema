@@ -149,7 +149,9 @@ export class ConeccionService {
   };
 
   let  datos={'provincia':provincia};
-  let url = this.apiUrl + 'method/tarjetaapp.sw_envios.getCiudades';
+  // let url = this.apiUrl + 'method/tarjetaapp.sw_envios.getCiudades';
+  let url = this.apiUrl + 'method/app_triplea.utils.servicios.getCiudades';
+  
   return this.httpClient.post(url, datos,  header); 
 }
 
