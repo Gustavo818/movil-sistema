@@ -1,5 +1,6 @@
  
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
 import { ConeccionService } from 'src/app/coneccion.service';
 
@@ -15,7 +16,9 @@ export class RemitenteListaPage implements OnInit {
   constructor( 
     private navController: NavController,
     private cnx: ConeccionService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private router: Router,
+
     ) { }
 
   ngOnInit() {
@@ -45,7 +48,7 @@ export class RemitenteListaPage implements OnInit {
     console.log("Eliminar registro: " + id);
   
 
-    this.cnx.deleteDocytpe("EnvioRemitente", id).subscribe(
+    this.cnx.deleteDocytpe("envio_remitente", id).subscribe(
       (resultado: any) => {
      
         this.getDatos();
@@ -77,6 +80,7 @@ export class RemitenteListaPage implements OnInit {
             console.log('Acción confirmada');
             this.deleteRegistro(id);
             // Aquí puedes poner el código que se ejecutará al confirmar
+            this.router.navigateByUrl('/menu/remitente-lista');
           }
         }
       ]

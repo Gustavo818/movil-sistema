@@ -73,7 +73,7 @@ export class RemitenteFormularioPage implements OnInit {
     private navController: NavController,
     private cnx: ConeccionService,
     private alertController: AlertController,
- 
+    private router: Router,
     private route: ActivatedRoute,
     private loadingController: LoadingController,
   ) {
@@ -120,6 +120,7 @@ export class RemitenteFormularioPage implements OnInit {
   regresarMenu() {   
     this.navController.navigateRoot("/menu");
   }
+  
   guardar(){
 
     var id = this.route.snapshot.paramMap.get('id');
@@ -133,6 +134,11 @@ export class RemitenteFormularioPage implements OnInit {
     // this.utils.sweetalert("Guardado correctamente");
     console.log("Guardado correctamente");
   } 
+
+  cancelar(){
+    this.navController.navigateRoot("/menu/remitente-lista");
+  }
+
 
   async insertRemitente(){
    
@@ -158,9 +164,11 @@ export class RemitenteFormularioPage implements OnInit {
     this.cnx.saveDoctype("envio_remitente", datos).subscribe(
       (resultado: any) => {
    
-        if( resultado.nombre_completo){
-           this.mensaje("Se ha ingresado:" +resultado.nombre_completo  );
-        }    
+        // if( resultado.nombre_completo){
+          // this.mensaje("Se ha ingresado:" +resultado.nombre_completo  );
+          this.mensaje("Se ha ingresado:" + this.nombre_completo  );
+           this.router.navigateByUrl('/menu/remitente-lista');
+        // }    
        
          
       }
@@ -193,6 +201,8 @@ export class RemitenteFormularioPage implements OnInit {
     this.cnx.updateDoctype("envio_remitente", this.id, datos).subscribe(
       (resultado: any) => {
         console.log(resultado);
+        this.mensaje("Datos actualizados :" + this.nombre_completo  );
+        this.router.navigateByUrl('/menu/remitente-lista');
       }
     );
    
